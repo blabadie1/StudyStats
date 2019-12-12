@@ -56,7 +56,7 @@ const CurrClasses = ({state}) => {
                   currClass.assignments.map((currAssignment, idx) =>
   
                   <React.Fragment key={currAssignment.title}>
-                  <Button data-testid={i.toString()+idx.toString()} className={i+idx} onClick={() => handleShow(currClass, currAssignment)}>{currClass.title} - {currAssignment.title}</Button>
+                  <Button data-cy={i.toString()+idx.toString()} data-testid={i.toString()+idx.toString()} className={i+idx} onClick={() => handleShow(currClass, currAssignment)}>{currClass.title} - {currAssignment.title}</Button>
                   <br />
                   </React.Fragment>
                 ))}
@@ -64,7 +64,7 @@ const CurrClasses = ({state}) => {
   
               <Modal show={showLog} onHide={handleClose}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Enter hours spent to complete this assignment:</Modal.Title>
+                  <Modal.Title data-cy="modal">Enter hours spent to complete this assignment:</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <Form>

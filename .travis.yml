@@ -1,8 +1,21 @@
 language: node_js
 node_js:
   - "12.10.0"
-after_success:
+# after_success:
+#   - npm run build
+#   - npm install -g firebase-tools
+#   - firebase use hosting --token $FIREBASE_TOKEN
+#   - firebase deploy --token $FIREBASE_TOKEN --non-interactive
+addons:
+  apt:
+    packages:
+      # needed by Cypress, not in Ubuntu 16+ by default
+      - libgconf-2-4
+cache:
+  directories:
+  - node_modules
+  # folder with Cypress binary
+  - ~/.cache
+script:
+  - npm run test:ci
   - npm run build
-  - npm install -g firebase-tools
-  - firebase use hosting --token $FIREBASE_TOKEN
-  - firebase deploy --token $FIREBASE_TOKEN --non-interactive
