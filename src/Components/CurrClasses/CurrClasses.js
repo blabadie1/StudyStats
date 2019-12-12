@@ -7,8 +7,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import _ from 'lodash';
+import json from '../../assignments.json';
 
 const CurrClasses = ({state}) => {
+
+    console.log(json.courses);
 
     const [showLog, setShowLog] = useState(false);
     const [logItem, setLogItem] = useState([{id: "", title: "", assignments: []}, {id: "", title: "", average_time_spent: "", completed: ""}]);
@@ -49,11 +52,11 @@ const CurrClasses = ({state}) => {
             <Card.Title><h3>Upcoming Stuff</h3></Card.Title>
             <Card.Text>
               <ButtonGroup variant="flush">
-                {state.classes.map(currClass =>
-                  currClass.assignments.map(currAssignment =>
+                {state.classes.map((currClass, i) =>
+                  currClass.assignments.map((currAssignment, idx) =>
   
                   <React.Fragment key={currAssignment.title}>
-                  <Button onClick={() => handleShow(currClass, currAssignment)}>{currClass.title} - {currAssignment.title}</Button>
+                  <Button data-testid={i.toString()+idx.toString()} className={i+idx} onClick={() => handleShow(currClass, currAssignment)}>{currClass.title} - {currAssignment.title}</Button>
                   <br />
                   </React.Fragment>
                 ))}

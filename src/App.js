@@ -2,9 +2,7 @@ import React, { useState , useEffect} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
-import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import _ from 'lodash';
 import CurrClasses from './Components/CurrClasses/CurrClasses.js';
@@ -30,6 +28,7 @@ function App() {
     }
     fetchClasses();
   }, [])
+  console.log(classes);
 
   return (
     <React.Fragment>
